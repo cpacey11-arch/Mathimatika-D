@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="el"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2η Επανάληψη – Μαθηματικά Δ΄ Τάξης</title>
+<style>
+:root{--teal:#0f9d8a;--bg:#fff;--fg:#1d1d1d;--soft:#e6f5f2;--blue:#d6eefb;--peach:#fdebd8}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#17201f;--fg:#f0f0f0;--soft:#1f3532;--blue:#1d3a4d;--peach:#4a3a2a}}
+body{font-family:Arial,Helvetica,sans-serif;font-size:21px;line-height:1.5;color:var(--fg);background:var(--bg);margin:0}
+main{max-width:900px;margin:auto;padding:16px}
+h1{background:var(--teal);color:#fff;padding:12px 18px;border-radius:10px;font-size:34px;margin:0 0 12px}
+h2{color:var(--teal);font-size:26px;margin:34px 0 10px} h2 span{color:var(--fg);font-size:23px}
+.hl{background:var(--blue);padding:8px 12px;border-radius:6px;margin:14px 0 6px}
+ol.clues{list-style:none;padding:0;margin:0} .clues li{display:flex;align-items:center;gap:10px;margin:8px 0;flex-wrap:wrap}
+.n{color:var(--teal);font-weight:bold;width:30px} .t{flex:1 1 300px}
+input{font-size:22px;width:130px;padding:6px 10px;border:2px solid #444;border-radius:6px;background:var(--bg);color:var(--fg);text-align:center}
+input.ok{border-color:#1a9a3a;background:#dff5e3;color:#111} input.no{border-color:#d33;background:#fde2e2;color:#111}
+.m{width:28px;font-size:24px}
+button{font-size:20px;padding:8px 18px;border:0;border-radius:8px;background:var(--teal);color:#fff;cursor:pointer;margin:10px 0}
+.dots{letter-spacing:2px;font-size:22px;margin:12px 0} .work{background:var(--peach);height:110px;border-radius:6px}
+table{border-collapse:collapse} td,th{border:2px solid #444;text-align:center;padding:8px 12px}
+.magic td{width:110px;height:64px;font-weight:bold}
+.rel td{font-size:24px;padding:10px 18px} .rel td.sg{font-weight:bold}
+.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;background:var(--soft);border:2px solid var(--teal);padding:14px;border-radius:8px}
+.blank{display:inline-block;width:90px;border-bottom:2px dotted var(--fg)}
+.key{border:2px solid var(--teal);padding:8px 16px;display:inline-block;font-weight:bold;border-radius:6px}
+.pat span{font-size:46px;margin-right:6px} .s{color:#1f5fbf} .c{color:var(--teal)}
+.arrows td{border:0;padding:6px} .arrows .box{width:150px;height:46px;border:2px solid #444} .b1{background:#aeddf5} .b2{background:#a8d5cc} .arrows .mid{background:#f4b6d2;color:#111;border:2px solid #444;font-weight:bold;font-size:24px;width:150px} .lab{font-weight:bold;white-space:nowrap}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px} .cards div{border:2px solid var(--teal);text-align:center;border-radius:6px;padding-bottom:6px} .cards b{display:block;background:var(--teal);color:#fff;margin-bottom:6px}
+.dt td{height:44px;min-width:70px} .dt th{background:var(--soft)} .dt td:first-child{font-weight:bold;text-align:left}
+.chart{width:100%;max-width:620px}
+details{margin-top:36px;border:2px dashed var(--teal);padding:10px 16px;border-radius:8px} summary{cursor:pointer;font-weight:bold;color:var(--teal)}
+footer{text-align:center;color:#666;margin:40px 0 10px;font-size:17px}
+@media print{button,.m{display:none} details{display:none} h1{-webkit-print-color-adjust:exact;print-color-adjust:exact} body{font-size:18px}}
+</style></head><body><main>
+<h1>2η Επανάληψη – Μαθηματικά Δ΄ Τάξης</h1>
+<p>Όνομα: ………………………………… Ημερομηνία: …………………</p>
+
+<h2>1) <span>Συμπληρώνω τους αριθμούς:</span></h2>
+<ol class="clues"><li><span class="n">1.</span><span class="t">Το διπλάσιο του αριθμού 6.350.</span><input data-a="12700" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">2.</span><span class="t">Οκτώ χιλιάδες εξακόσια τριάντα πέντε.</span><input data-a="8635" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">3.</span><span class="t">1 ΔΧ + 6 Χ + 5 Δ + 2 Μ.</span><input data-a="16052" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">4.</span><span class="t">Έχει 150 Εκατοντάδες.</span><input data-a="15000" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">5.</span><span class="t">20.000 – 1.</span><input data-a="19999" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">6.</span><span class="t">Το τριπλάσιο του αριθμού 2.150.</span><input data-a="6450" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">7.</span><span class="t">Έχει μια εκατοντάδα λιγότερη από τον αριθμό 17.689.</span><input data-a="17589" inputmode="numeric" autocomplete="off"><span class="m"></span></li><li><span class="n">8.</span><span class="t">Το μισό του αριθμού 16.384.</span><input data-a="8192" inputmode="numeric" autocomplete="off"><span class="m"></span></li></ol>
+<button onclick="chk()">Έλεγχος απαντήσεων</button>
+<p><b>Αξιοποιώ τους αριθμούς που συμπλήρωσα:</b></p>
+<div class="hl">● Διατάσσω όσους πενταψήφιους αριθμούς βρήκα παραπάνω:</div>
+<p class="dots">………………… &lt; ………………… &lt; ………………… &lt; ………………… &lt; …………………</p>
+<div class="hl">● Επιλέγω αριθμούς που, αν τους προσθέσω, δίνουν άθροισμα μεγαλύτερο από το 14.000 και μικρότερο από το 15.000:</div>
+<p class="dots">………………………………………………………………</p>
+<p>● Ελέγχω υπολογίζοντας με ακρίβεια.</p><div class="work"></div>
+
+<h2>2) <span>Μαγικό Τετράγωνο</span></h2>
+<p>Το άθροισμα σε κάθε στήλη και σε κάθε γραμμή είναι <b>12.000</b>.</p>
+<table class="magic"><tr><td>5.500</td><td></td><td></td></tr><tr><td>3.000</td><td>4.000</td><td></td></tr><tr><td></td><td></td><td>2.500</td></tr></table>
+
+<h2>3) <span>Συμπληρώνω κατάλληλα ψηφία για να ισχύουν οι σχέσεις:</span></h2>
+<table class="rel"><tr><td>1 __ . 5 0 8</td><td class="sg">&lt;</td><td>1 3 . 5 0 8</td></tr><tr><td>2 __ . 1 __ 8</td><td class="sg">=</td><td>2 7 . 1 4 8</td></tr><tr><td>3 __ . 7 3 0</td><td class="sg">&gt;</td><td>3 4 . 7 3 0</td></tr></table>
+
+<h2>4) <span>Υπολογίζω με τον νου:</span></h2>
+<div class="ops"><div>● 3.793 + 1.999 = <span class="blank"></span></div><div>● 4.800 – 1.999 = <span class="blank"></span></div><div>● 2.652 + 980 = <span class="blank"></span></div><div>● 3.233 – 970 = <span class="blank"></span></div><div>● 6.373 + 1.900 = <span class="blank"></span></div><div>● 7.724 – 2.800 = <span class="blank"></span></div></div>
+
+<h2>5) <span>Υπολογίζω την αξία του μοτίβου:</span></h2>
+<div class="key">★ = 1.200 &nbsp;&nbsp; ● = 2.500</div>
+<p class="pat"><span class="s">★</span><span class="s">★</span><span class="c">●</span><span class="s">★</span><span class="s">★</span><span class="c">●</span><span class="s">★</span><span class="s">★</span><span class="c">●</span><span class="s">★</span></p><p class="dots">………………………………………………………………</p>
+
+<h2>6) <span>Συμπληρώνω τους αριθμούς:</span></h2>
+<table class="arrows"><tr><td class="lab">− 1 ◄</td><td class="box b1"></td><td class="mid">17.000</td><td class="lab">► + 1</td><td class="box b2"></td></tr><tr><td class="lab">− 10 ◄</td><td class="box b1"></td><td class="mid">17.000</td><td class="lab">► + 10</td><td class="box b2"></td></tr><tr><td class="lab">− 100 ◄</td><td class="box b1"></td><td class="mid">17.000</td><td class="lab">► + 100</td><td class="box b2"></td></tr><tr><td class="lab">− 1.000 ◄</td><td class="box b1"></td><td class="mid">17.000</td><td class="lab">► + 1.000</td><td class="box b2"></td></tr></table>
+
+<h2>7) <span>Τα παιδιά της Δ΄ και της Ε΄ τάξης πήγαν σε εργαστήριο ρομποτικής. Ο διευθυντής κράτησε στοιχεία για τα παιδιά που συμμετείχαν από κάθε τμήμα.</span></h2>
+<div class="cards"><div><b>Δ1</b>10 κορίτσια<br>8 αγόρια</div><div><b>Δ2</b>9 κορίτσια<br>11 αγόρια</div><div><b>Ε1</b>12 κορίτσια<br>7 αγόρια</div><div><b>Ε2</b>8 κορίτσια<br>10 αγόρια</div></div>
+<p><b>α)</b> Οργανώνω τα στοιχεία στον παρακάτω πίνακα.</p>
+<table class="dt"><tr><th></th><th>Δ1</th><th>Δ2</th><th>Ε1</th><th>Ε2</th><th>Σύνολο</th></tr><tr><td>Κορίτσια</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Αγόρια</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Σύνολο</td><td></td><td></td><td></td><td></td><td></td></tr></table>
+<p><b>β)</b> Οργανώνω τα στοιχεία με διαφορετικό τρόπο στο ραβδόγραμμα.</p>
+<svg viewBox="0 0 620 340" class="chart" role="img" aria-label="Κενό ραβδόγραμμα"><g font-size="16" fill="#333"><line x1="70" x2="600" y1="290" y2="290" stroke="#bbb"/><text x="55" y="295" text-anchor="end">0</text><line x1="70" x2="600" y1="240" y2="240" stroke="#bbb"/><text x="55" y="245" text-anchor="end">5</text><line x1="70" x2="600" y1="190" y2="190" stroke="#bbb"/><text x="55" y="195" text-anchor="end">10</text><line x1="70" x2="600" y1="140" y2="140" stroke="#bbb"/><text x="55" y="145" text-anchor="end">15</text><line x1="70" x2="600" y1="90" y2="90" stroke="#bbb"/><text x="55" y="95" text-anchor="end">20</text><line x1="70" x2="600" y1="40" y2="40" stroke="#bbb"/><text x="55" y="45" text-anchor="end">25</text><line x1="70" x2="70" y1="30" y2="290" stroke="#000" stroke-width="2"/><line x1="70" x2="605" y1="290" y2="290" stroke="#000" stroke-width="2"/><text x="170" y="318" text-anchor="middle" font-weight="bold">Δ1</text><text x="295" y="318" text-anchor="middle" font-weight="bold">Δ2</text><text x="420" y="318" text-anchor="middle" font-weight="bold">Ε1</text><text x="545" y="318" text-anchor="middle" font-weight="bold">Ε2</text><text x="12" y="165" transform="rotate(-90 12 165)" text-anchor="middle" font-size="14">παιδιά σε κάθε τμήμα</text></g></svg>
+
+<details><summary>Απαντήσεις (για την εκπαιδευτικό)</summary>
+<p><b>1)</b> 12.700 · 8.635 · 16.052 · 15.000 · 19.999 · 6.450 · 17.589 · 8.192<br>Διάταξη: 12.700 &lt; 15.000 &lt; 16.052 &lt; 17.589 &lt; 19.999<br>Άθροισμα 14.000–15.000: 6.450 + 8.192 = 14.642</p>
+<p><b>2)</b> 5.500 | 2.000 | 4.500 / 3.000 | 4.000 | 5.000 / 3.500 | 6.000 | 2.500</p>
+<p><b>3)</b> α) 0, 1 ή 2 · β) 7 και 4 · γ) 5, 6, 7, 8 ή 9</p>
+<p><b>4)</b> 5.792 · 2.801 · 3.632 · 2.263 · 8.273 · 4.924</p>
+<p><b>5)</b> 7 × 1.200 + 3 × 2.500 = 15.900</p>
+<p><b>6)</b> 16.999, 16.990, 16.900, 16.000 / 17.001, 17.010, 17.100, 18.000</p>
+<p><b>7α)</b> Κορίτσια: 10, 9, 12, 8 → 39 · Αγόρια: 8, 11, 7, 10 → 36 · Σύνολα: 18, 20, 19, 18 → 75<br><b>7β)</b> Δ1 = 18, Δ2 = 20, Ε1 = 19, Ε2 = 18</p></details>
+<footer>© myspiderwebsite</footer></main>
+<script>
+function chk(){document.querySelectorAll('.clues input').forEach(function(i){var v=i.value.replace(/[.\s]/g,'');var m=i.nextElementSibling;i.className=v===''?'':(v===i.dataset.a?'ok':'no');m.textContent=v===''?'':(v===i.dataset.a?'✔':'✘');});}
+</script></body></html>
