@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Αξιολογώ και οργανώνω πληροφορίες – Παρόμοιες ασκήσεις</title>
+<style>
+  body{font-family:"Segoe UI",Arial,sans-serif;font-size:22px;line-height:1.5;max-width:900px;margin:0 auto;padding:20px;color:#222;background:#fff}
+  h1{font-size:34px;color:#2e7d32;border-bottom:4px solid #8bc34a;padding-bottom:8px}
+  .ex{border:3px solid #6aa84f;border-radius:16px;padding:18px 22px;margin:24px 0;background:#fafff5}
+  .ex h2{font-size:28px;margin:0 0 10px;color:#2e7d32}
+  .box{border:2px solid #6aa84f;border-radius:12px;padding:12px 16px;margin:12px 0;background:#fff}
+  label{display:block;margin:6px 0;cursor:pointer}
+  input[type=checkbox],input[type=radio]{width:24px;height:24px;vertical-align:middle;margin-right:8px}
+  input[type=number]{font-size:22px;width:90px;padding:4px 8px;border:2px solid #888;border-radius:8px;text-align:center}
+  table{border-collapse:collapse;margin:12px 0}
+  td,th{border:2px solid #333;padding:8px 14px;text-align:center;font-size:22px}
+  th{background:#e8f5e9}
+  button{font-size:22px;padding:10px 26px;border:none;border-radius:10px;background:#2e7d32;color:#fff;cursor:pointer;margin:10px 10px 0 0}
+  button.sec{background:#757575}
+  .ok{background:#c8e6c9 !important;border-color:#2e7d32 !important}
+  .bad{background:#ffcdd2 !important;border-color:#c62828 !important}
+  .msg{font-weight:bold;margin-top:10px;min-height:30px}
+  .dots{display:grid;grid-template-columns:40px repeat(5,56px);gap:0;margin:12px 0}
+  .dots div{height:40px;display:flex;align-items:center;justify-content:center;border:1px solid #ddd}
+  .dots .ylab{border:none;font-size:18px;color:#555}
+  .dots .xlab{border:none;border-top:3px solid #333;font-size:20px;height:36px}
+  .dot{width:26px;height:26px;border-radius:50%;background:#d32f2f}
+  .cap{font-size:18px;color:#555}
+  footer{text-align:center;margin-top:30px;padding-top:12px;border-top:2px solid #ccc;font-size:18px;color:#555}
+  @media print{button,.msg{display:none}}
+</style>
+</head>
+<body>
+<h1>Αξιολογώ και οργανώνω πληροφορίες</h1>
+
+<!-- ΑΣΚΗΣΗ 1 -->
+<div class="ex" id="ex1">
+  <h2>1) Διαβάζω προσεκτικά το πρόβλημα</h2>
+  <p>Ο Γιώργος, η Μαρία και ο Κώστας μαζεύουν βότσαλα στην παραλία. Ο Γιώργος μάζεψε 26 βότσαλα. Η Μαρία μάζεψε 5 περισσότερα από τον Γιώργο. Ο Κώστας μάζεψε λιγότερα από τους δύο. <b>Πόσα βότσαλα μάζεψαν όλοι μαζί;</b></p>
+  <div class="box">
+    <b>α) Τι είναι απαραίτητο να γνωρίζω για να απαντήσω στο ερώτημα; Επιλέγω ✔</b>
+    <label><input type="checkbox" data-c="0"> Σε ποια παραλία πήγαν τα παιδιά.</label>
+    <label><input type="checkbox" data-c="1"> Πόσα βότσαλα μάζεψε ο Γιώργος.</label>
+    <label><input type="checkbox" data-c="1"> Πόσα βότσαλα μάζεψε η Μαρία.</label>
+    <label><input type="checkbox" data-c="0"> Ποιο παιδί μάζεψε τα περισσότερα.</label>
+    <label><input type="checkbox" data-c="1"> Πόσα βότσαλα μάζεψε ο Κώστας.</label>
+  </div>
+  <div class="box">
+    <b>β) Έχω όλες τις πληροφορίες που χρειάζονται;</b>
+    <label><input type="radio" name="e1a"> Ναι, το λύνω.</label>
+    <label><input type="radio" name="e1a" data-c="1"> Όχι, δεν μπορώ να το λύσω.</label>
+    <b>Τι λείπει;</b>
+    <label><input type="radio" name="e1b"> Πόσα βότσαλα μάζεψε η Μαρία.</label>
+    <label><input type="radio" name="e1b" data-c="1"> Ακριβώς πόσα βότσαλα μάζεψε ο Κώστας.</label>
+    <label><input type="radio" name="e1b"> Πόσα παιδιά είναι.</label>
+  </div>
+  <button onclick="check('ex1')">Έλεγχος</button><button class="sec" onclick="resetEx('ex1')">Καθαρισμός</button>
+  <div class="msg"></div>
+</div>
+
+<!-- ΑΣΚΗΣΗ 2 -->
+<div class="ex" id="ex2">
+  <h2>2) Αξιοποιώ τα στοιχεία και απαντώ</h2>
+  <p><b>α)</b> Η Ελένη έχει 45 αυτοκόλλητα. Ο Άρης έχει διπλάσια από την Ελένη. Η Νίκη έχει το ένα πέμπτο των αυτοκόλλητων του Άρη.</p>
+  <div class="box">
+    <div>Πόσα αυτοκόλλητα έχει ο Άρης; <input type="number" data-a="90"></div><br>
+    <div>Πόσα αυτοκόλλητα έχει η Νίκη; <input type="number" data-a="18"></div><br>
+    <div>Πόσα αυτοκόλλητα έχουν και οι τρεις μαζί; <input type="number" data-a="153"></div><br>
+    <div>Πόσων ετών είναι η Ελένη;
+      <label><input type="radio" name="e2a"> Μπορώ να απαντήσω.</label>
+      <label><input type="radio" name="e2a" data-c="1"> Δεν μπορώ, δεν δίνεται.</label>
+    </div>
+  </div>
+  <p><b>β)</b> Ο Θάνος μαζεύει κάρτες με ποδοσφαιριστές. Κάθε πακέτο με 10 κάρτες κοστίζει 3 €. Ο Θάνος ξόδεψε 24 € για κάρτες. <b>Πόσες κάρτες αγόρασε;</b></p>
+  <table>
+    <tr><th>Ευρώ</th><td>3 €</td><td>6 €</td><td><input type="number" data-a="12"> €</td><td>24 €</td></tr>
+    <tr><th>Κάρτες</th><td>10</td><td>20</td><td><input type="number" data-a="40"></td><td><input type="number" data-a="80"></td></tr>
+  </table>
+  <p>Ο Θάνος αγόρασε <input type="number" data-a="80"> κάρτες.</p>
+  <button onclick="check('ex2')">Έλεγχος</button><button class="sec" onclick="resetEx('ex2')">Καθαρισμός</button>
+  <div class="msg"></div>
+</div>
+
+<!-- ΑΣΚΗΣΗ 3 -->
+<div class="ex" id="ex3">
+  <h2>3) Πίνακας και σημειόγραμμα</h2>
+  <p>Ο Μιχάλης ρώτησε τα παιδιά της τάξης του πόσα κατοικίδια έχουν. Οργάνωσε τα στοιχεία σε πίνακα και σε σημειόγραμμα.</p>
+  <p><b>α)</b> Παρατηρώ το σημειόγραμμα και συμπληρώνω τον πίνακα.</p>
+  <table>
+    <tr><th>αριθμός κατοικιδίων</th><td>0</td><td>1</td><td>2</td><td>3</td><td>&gt; 3</td></tr>
+    <tr><th>αριθμός παιδιών</th><td>5</td><td>7</td><td><input type="number" data-a="4"></td><td>3</td><td><input type="number" data-a="1"></td></tr>
+  </table>
+  <div class="cap">αριθμός παιδιών (κάθε κουκκίδα = 1 παιδί)</div>
+  <div class="dots" id="dots"></div>
+  <div class="cap">αριθμός κατοικιδίων (περισσότερα από 3 → στήλη «&gt; 3»)</div>
+  <div class="box">
+    <b>β) Πώς μπορούμε να ελέγξουμε αν συμπληρώσαμε σωστά τον πίνακα;</b>
+    <label><input type="radio" name="e3a"> Μετράμε μόνο την πρώτη στήλη.</label>
+    <label><input type="radio" name="e3a" data-c="1"> Μετράμε τις κουκκίδες κάθε στήλης και τις συγκρίνουμε με τους αριθμούς του πίνακα.</label>
+    <label><input type="radio" name="e3a"> Δεν χρειάζεται έλεγχος.</label>
+  </div>
+  <p><b>γ)</b> Πόσα παιδιά έχουν λιγότερα από 2 κατοικίδια; <input type="number" data-a="12"></p>
+  <p>Πόσα παιδιά συνολικά απάντησαν στην ερώτηση; <input type="number" data-a="20"></p>
+  <button onclick="check('ex3')">Έλεγχος</button><button class="sec" onclick="resetEx('ex3')">Καθαρισμός</button>
+  <div class="msg"></div>
+</div>
+
+<footer>© myspiderwebsite</footer>
+
+<script>
+  // σημειόγραμμα
+  (function(){
+    var data=[5,7,4,3,1], max=7, g=document.getElementById('dots'), h='';
+    for(var r=max;r>=1;r--){
+      h+='<div class="ylab">'+r+'</div>';
+      for(var c=0;c<5;c++) h+='<div>'+(data[c]>=r?'<span class="dot"></span>':'')+'</div>';
+    }
+    h+='<div class="ylab"></div>';
+    ['0','1','2','3','>3'].forEach(function(l){h+='<div class="xlab">'+l+'</div>'});
+    g.innerHTML=h;
+  })();
+
+  function check(id){
+    var ex=document.getElementById(id), total=0, right=0;
+    ex.querySelectorAll('input[type=number]').forEach(function(i){
+      total++; var ok=i.value.trim()===i.dataset.a;
+      i.classList.toggle('ok',ok); i.classList.toggle('bad',!ok); if(ok) right++;
+    });
+    ex.querySelectorAll('input[type=checkbox]').forEach(function(i){
+      total++; var ok=(i.checked===(i.dataset.c==='1'));
+      i.parentElement.classList.toggle('ok',ok); i.parentElement.classList.toggle('bad',!ok); if(ok) right++;
+    });
+    var groups={};
+    ex.querySelectorAll('input[type=radio]').forEach(function(i){(groups[i.name]=groups[i.name]||[]).push(i)});
+    Object.keys(groups).forEach(function(n){
+      total++; var sel=groups[n].filter(function(i){return i.checked})[0];
+      var ok=sel&&sel.dataset.c==='1'; if(ok) right++;
+      groups[n].forEach(function(i){i.parentElement.classList.remove('ok','bad')});
+      if(sel) sel.parentElement.classList.add(ok?'ok':'bad');
+    });
+    var m=ex.querySelector('.msg');
+    m.textContent=right===total?('Μπράβο! Όλα σωστά ('+right+'/'+total+') 🎉'):('Σωστά: '+right+' από '+total+'. Δοκίμασε ξανά τα κόκκινα.');
+    m.style.color=right===total?'#2e7d32':'#c62828';
+  }
+  function resetEx(id){
+    var ex=document.getElementById(id);
+    ex.querySelectorAll('input').forEach(function(i){i.value=i.type==='number'?'':i.value;i.checked=false;i.classList.remove('ok','bad');i.parentElement.classList.remove('ok','bad')});
+    ex.querySelector('.msg').textContent='';
+  }
+</script>
+</body>
+</html>
