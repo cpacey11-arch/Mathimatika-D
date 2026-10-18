@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Αφαίρεση με κρατούμενο — Εξάσκηση</title>
+<style>
+:root{--ink:#1f2937;--muted:#6b7280;--bg:#f6f4ee;--card:#ffffff;--accent:#2f6f6b;--accent2:#e9f3f1;--ok:#1b7f3b;--okbg:#e3f5e8;--bad:#b42318;--badbg:#fde8e6;--line:#d9d4c7;--hl:#fff3c4;--w:clamp(38px,10.5vw,58px)}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",Arial,sans-serif;font-size:20px;line-height:1.5;color:var(--ink);background:var(--bg)}
+header{background:var(--accent);color:#fff;padding:28px 20px;text-align:center}
+header h1{margin:0 0 6px;font-size:2.1rem}
+header p{margin:0;font-size:1.1rem;opacity:.92}
+main{max-width:920px;margin:0 auto;padding:20px 14px 40px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:22px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+h2{margin:0 0 10px;font-size:1.5rem;color:var(--accent)}
+h3{margin:0 0 8px;font-size:1.2rem}
+ol.steps{margin:8px 0 0;padding-left:26px}
+ol.steps li{margin-bottom:8px}
+.term{background:var(--accent2);border-radius:6px;padding:1px 7px;font-weight:600}
+.formula{text-align:center;font-size:1.15rem;margin:10px 0 4px}
+button{font-family:inherit;font-size:1rem;border:0;border-radius:10px;padding:10px 18px;cursor:pointer;background:var(--accent);color:#fff;font-weight:600}
+button:hover{filter:brightness(1.1)}
+button.ghost{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+button.small{padding:7px 14px;font-size:.95rem}
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.tabs button{background:#fff;color:var(--accent);border:2px solid var(--accent)}
+.tabs button.on{background:var(--accent);color:#fff}
+.scorebar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;background:var(--accent2);border-radius:12px;padding:10px 16px;margin-bottom:16px;font-weight:600}
+.exgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:18px}
+.ex{border:2px solid var(--line);border-radius:14px;padding:14px 16px;background:#fffefb}
+.ex.done{border-color:var(--ok);background:var(--okbg)}
+.lt{font-weight:700;color:var(--accent);font-size:1.15rem}
+.rows{display:inline-block;margin:8px 0}
+.num{display:flex;align-items:center}
+.op{width:calc(var(--w)*.8);text-align:center;font-size:calc(var(--w)*.75);font-weight:700}
+.dg,.cc{width:var(--w);display:flex;align-items:center;justify-content:center}
+.dg{height:calc(var(--w)*1.05);font-size:calc(var(--w)*.8);font-family:Consolas,"Courier New",monospace;font-weight:700}
+.dg.hl{background:var(--hl);border-radius:8px}
+.dg.gap,.cc.gap{margin-left:calc(var(--w)*.3)}
+.cc{height:calc(var(--w)*.62)}
+.line{border-top:4px solid var(--ink);margin:3px 0 6px}
+input.ans{width:var(--w);height:calc(var(--w)*1.05);font-size:calc(var(--w)*.8);text-align:center;border:2px solid var(--line);border-radius:8px;font-family:Consolas,"Courier New",monospace;font-weight:700;background:#fff;color:var(--ink);padding:0}
+input.ans:focus{outline:3px solid #9cc9c4;border-color:var(--accent)}
+input.ans.ok{background:var(--okbg);border-color:var(--ok)}
+input.ans.bad{background:var(--badbg);border-color:var(--bad)}
+input.cr{width:calc(var(--w)*.5);height:calc(var(--w)*.5);font-size:calc(var(--w)*.38);text-align:center;border:1px dashed #aaa;border-radius:6px;padding:0;background:#fafafa;color:var(--muted)}
+input.txt{font-size:1.1rem;font-family:inherit;padding:8px 12px;border:2px solid var(--line);border-radius:10px;width:100%;max-width:240px}
+input.txt.ok{background:var(--okbg);border-color:var(--ok)}
+input.txt.bad{background:var(--badbg);border-color:var(--bad)}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.fb{margin-top:10px;font-size:1rem;min-height:1px}
+.fb .good{color:var(--ok);font-weight:700}
+.fb .nope{color:var(--bad);font-weight:600}
+.fb p{margin:4px 0}
+.hint{color:var(--muted);font-size:.95rem}
+.choice{display:flex;flex-wrap:wrap;gap:16px;margin:8px 0}
+.choice label{cursor:pointer;font-weight:600}
+.choice input{transform:scale(1.4);margin-right:8px}
+.prob{font-size:1.1rem;margin:4px 0 10px}
+.bottom{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.caption{min-height:3.2em;background:var(--accent2);border-radius:10px;padding:10px 14px;margin:10px 0;font-size:1rem}
+footer{text-align:center;color:var(--muted);padding:18px;font-size:1rem}
+@media print{header,.tabs,.btns,.bottom,.scorebar{display:none}body{background:#fff}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Αφαίρεση με κρατούμενο</h1>
+  <p>Διαδραστική εξάσκηση — 6 επίπεδα</p>
+</header>
+
+<main>
+  <section class="card" id="theory">
+    <h2>Θυμόμαστε τον αλγόριθμο</h2>
+    <div class="formula"><span class="term">μειωτέος</span> − <span class="term">αφαιρετέος</span> = <span class="term">διαφορά</span></div>
+    <ol class="steps">
+      <li>Αρχίζουμε από τις <b>μονάδες</b> και προχωράμε προς τα <b>αριστερά</b>.</li>
+      <li>Αν το ψηφίο του μειωτέου είναι <b>μικρότερο</b> από το ψηφίο του αφαιρετέου, του προσθέτουμε <b>10</b> και <b>κρατάμε 1</b>.</li>
+      <li>Στην επόμενη στήλη προσθέτουμε το <b>κρατούμενο 1</b> στο ψηφίο του αφαιρετέου και συνεχίζουμε.</li>
+      <li>Κάνουμε <b>δοκιμή</b>: διαφορά + αφαιρετέος = μειωτέος.</li>
+    </ol>
+    <h3 style="margin-top:18px">Δες ένα παράδειγμα βήμα προς βήμα</h3>
+    <div id="demo"></div>
+  </section>
+
+  <nav class="tabs" id="tabs"></nav>
+  <section class="card" id="levelCard">
+    <h2 id="lvTitle"></h2>
+    <p class="hint" id="lvDesc"></p>
+    <div class="scorebar"><span id="score"></span><span class="hint">Γράψε τη διαφορά ψηφίο προς ψηφίο, από τα δεξιά προς τα αριστερά.</span></div>
+    <div class="exgrid" id="exgrid"></div>
+    <div class="bottom">
+      <button onclick="checkAll()">Έλεγχος όλων</button>
+      <button class="ghost" onclick="loadLevel(level)">Νέες ασκήσεις</button>
+    </div>
+  </section>
+</main>
+
+<footer>© myspiderwebsite</footer>
+
+<script>
+const NAMES=['Μονάδες','Δεκάδες','Εκατοντάδες','Χιλιάδες','Δεκάδες χιλιάδων','Εκατοντάδες χιλιάδων'];
+const LET=['α','β','γ','δ','ε','στ'];
+const fmt=n=>String(n).replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+const clean=s=>String(s).replace(/[.\s]/g,'');
+
+/* ---------- λογική αφαίρεσης ---------- */
+function analyze(m,s){
+  const n=String(m).length;
+  const A=String(m).split('').reverse().map(Number);
+  const B=String(s).padStart(n,'0').split('').reverse().map(Number);
+  let c=0;const cols=[];
+  for(let i=0;i<n;i++){
+    const a=A[i],b=B[i]+c,borrow=a<b,top=borrow?a+10:a,r=top-b;
+    cols.push({a,b0:B[i],cin:c,b,borrow,top,r});
+    c=borrow?1:0;
+  }
+  return cols;
+}
+const nb=cols=>cols.filter(x=>x.borrow).length;
+function explain(col,i){
+  let t='<b>'+NAMES[i]+':</b> ';
+  if(col.cin)t+=col.b0+' + 1 (κρατούμενο) = '+col.b+'. ';
+  t+=col.borrow
+    ? 'Το '+col.a+' είναι μικρότερο από το '+col.b+', άρα '+col.top+' − '+col.b+' = '+col.r+' και κρατάω 1.'
+    : col.a+' − '+col.b+' = '+col.r+'.';
+  return t;
+}
+function gen(n,minB,opts){
+  opts=opts||{};
+  for(let k=0;k<6000;k++){
+    const lo=Math.pow(10,n-1);let m,s;
+    if(opts.zeros){
+      const d=rnd(4,9),t=rnd(0,2);
+      m=d*1000+(t===0?0:(t===1?rnd(1,9):rnd(1,9)*100));
+      s=rnd(1000,m-1000);
+      if(s%10===0)continue;
+    }else{
+      m=rnd(2*lo,lo*10-1);s=rnd(lo,m-lo);
+    }
+    const c=nb(analyze(m,s));
+    if(c>=minB&&(!opts.exact||c===opts.exact))return{m:m,s:s};
+  }
+  return{m:6402,s:2759};
+}
+function wrongResult(m,s){
+  const n=String(m).length;
+  const A=String(m).split('').reverse().map(Number);
+  const B=String(s).padStart(n,'0').split('').reverse().map(Number);
+  const cols=analyze(m,s);
+  const fi=cols.findIndex(x=>x.borrow);
+  let type=Math.random()<.5?'A':'B';
+  if(type==='B'&&fi>=n-1)type='A';
+  let c=0;const r=[];
+  for(let i=0;i<n;i++){
+    const a=A[i];
+    const skip=(type==='B'&&i===fi+1);
+    const b=B[i]+(skip?0:c);
+    if(type==='A'&&i===fi){r.push(Math.abs(a-b));c=0;}
+    else{const bo=a<b;r.push((bo?a+10:a)-b);c=bo?1:0;}
+  }
+  return Number(r.reverse().join(''));
+}
+
+/* ---------- γραμμές ψηφίων ---------- */
+const gapCls=(i,n)=>(i>0&&(n-i)%3===0)?' gap':'';
+function digitRow(str,n,op,hl){
+  const p=String(str).padStart(n,' ');
+  let h='<div class="num"><div class="op">'+op+'</div>';
+  for(let i=0;i<n;i++){
+    const on=(hl!==undefined&&hl!==null&&i===n-1-hl)?' hl':'';
+    h+='<div class="dg'+gapCls(i,n)+on+'">'+(p[i]===' '?'':p[i])+'</div>';
+  }
+  return h+'</div>';
+}
+function carryRow(n){
+  let h='<div class="num"><div class="op"></div>';
+  for(let i=0;i<n;i++)h+='<div class="cc'+gapCls(i,n)+'"><input class="cr" maxlength="1" inputmode="numeric" aria-label="κρατούμενο"></div>';
+  return h+'</div>';
+}
+function answerRow(n){
+  let h='<div class="num"><div class="op">=</div>';
+  for(let i=0;i<n;i++)h+='<div class="'+(gapCls(i,n)?'gap':'')+'"><input class="ans" maxlength="1" inputmode="numeric" aria-label="ψηφίο διαφοράς"></div>';
+  return h+'</div>';
+}
+
+/* ---------- παράδειγμα βήμα προς βήμα ---------- */
+let demoStep=0;const DEMO={m:6402,s:2759};
+function renderDemo(){
+  const n=String(DEMO.m).length,cols=analyze(DEMO.m,DEMO.s);
+  const hl=demoStep>0?demoStep-1:null;
+  let res='<div class="num"><div class="op">=</div>';
+  for(let i=0;i<n;i++){
+    const c=n-1-i;
+    const shown=c<demoStep?String(cols[c].r):'';
+    const on=(hl!==null&&c===hl)?' hl':'';
+    res+='<div class="dg'+gapCls(i,n)+on+'">'+(shown||'<span style="color:#c9c4b5">?</span>')+'</div>';
+  }
+  res+='</div>';
+  let cap;
+  if(demoStep===0)cap='Πάτα «Επόμενο βήμα» για να ξεκινήσουμε από τις μονάδες.';
+  else if(demoStep<n)cap=explain(cols[demoStep-1],demoStep-1);
+  else cap=explain(cols[n-1],n-1)+'<br><b>Δοκιμή:</b> '+fmt(DEMO.m-DEMO.s)+' + '+fmt(DEMO.s)+' = '+fmt(DEMO.m)+' — σωστό!';
+  document.getElementById('demo').innerHTML=
+    '<div class="rows">'+digitRow(DEMO.m,n,'',hl)+digitRow(DEMO.s,n,'−',hl)+'<div class="line"></div>'+res+'</div>'+
+    '<div class="caption">'+cap+'</div>'+
+    '<div class="btns"><button class="small" onclick="demoNext()">'+(demoStep>=n?'Από την αρχή':'Επόμενο βήμα')+'</button></div>';
+}
+function demoNext(){
+  const n=String(DEMO.m).length;
+  demoStep=demoStep>=n?0:demoStep+1;
+  renderDemo();
+}
+
+/* ---------- επίπεδα ---------- */
+const LEVELS=[
+  {t:'1. Ένα κρατούμενο',d:'Αφαιρέσεις τριψήφιων αριθμών με ένα μόνο κρατούμενο.'},
+  {t:'2. Πολλά κρατούμενα',d:'Τριψήφιοι και τετραψήφιοι αριθμοί με δύο ή περισσότερα κρατούμενα.'},
+  {t:'3. Μηδενικά',d:'Πρόσεχε τα μηδενικά του μειωτέου — εκεί το κρατούμενο εμφανίζεται συνέχεια!'},
+  {t:'4. Μεγάλοι αριθμοί',d:'Πενταψήφιοι και εξαψήφιοι αριθμοί.'},
+  {t:'5. Βρες το λάθος',d:'Κάποιες αφαιρέσεις είναι σωστές και κάποιες έχουν λάθος. Εσύ θα τις ελέγξεις, κάνοντας και δοκιμή με πρόσθεση.'},
+  {t:'6. Προβλήματα',d:'Διάβασε, σκέψου ποια πράξη χρειάζεται και βρες την απάντηση.'}
+];
+const PROBS=[
+  (a,b)=>'Η βιβλιοθήκη ενός σχολείου είχε '+fmt(a)+' βιβλία. Τα παιδιά δανείστηκαν '+fmt(b)+' βιβλία. Πόσα βιβλία έμειναν στη βιβλιοθήκη;',
+  (a,b)=>'Ένας ποδηλάτης πρέπει να διανύσει '+fmt(a)+' μέτρα. Έχει ήδη διανύσει '+fmt(b)+' μέτρα. Πόσα μέτρα του μένουν ακόμη;',
+  (a,b)=>'Η πόλη Α έχει '+fmt(a)+' κατοίκους και η πόλη Β έχει '+fmt(b)+' κατοίκους. Πόσους κατοίκους περισσότερους έχει η πόλη Α;',
+  (a,b)=>'Ο Νίκος θέλει να αγοράσει ένα ποδήλατο που κοστίζει '+fmt(a)+' €. Έχει ήδη αποταμιεύσει '+fmt(b)+' €. Πόσα ευρώ ακόμη χρειάζεται;',
+  (a,b)=>'Μια κορυφή έχει υψόμετρο '+fmt(a)+' μέτρα. Το καταφύγιο βρίσκεται στα '+fmt(b)+' μέτρα. Πόσα μέτρα πιο ψηλά από το καταφύγιο είναι η κορυφή;'
+];
+let level=1,data=[],solved=new Set();
+
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+function loadLevel(l){
+  level=l;solved=new Set();data=[];
+  if(l<=4){
+    for(let i=0;i<6;i++){
+      if(l===1)data.push(gen(3,1,{exact:1}));
+      else if(l===2)data.push(gen(rnd(3,4),2));
+      else if(l===3)data.push(gen(4,2,{zeros:true}));
+      else data.push(gen(rnd(5,6),3));
+    }
+  }else if(l===5){
+    const flags=shuffle([true,true,true,false,false]);
+    flags.forEach(isWrong=>{
+      let it,k=0;
+      do{
+        const g=gen(rnd(3,4),1);
+        const corr=g.m-g.s;
+        const shown=isWrong?wrongResult(g.m,g.s):corr;
+        it={m:g.m,s:g.s,corr:corr,shown:shown,isCorrect:!isWrong};
+        k++;
+      }while(isWrong&&it.shown===it.corr&&k<50);
+      data.push(it);
+    });
+  }else{
+    const idx=shuffle([0,1,2,3,4]).slice(0,4);
+    idx.forEach(t=>{
+      const g=gen(rnd(4,5),2);
+      data.push({t:t,m:g.m,s:g.s,corr:g.m-g.s});
+    });
+  }
+  render();
+}
+
+function render(){
+  const L=LEVELS[level-1];
+  document.getElementById('lvTitle').textContent=L.t;
+  document.getElementById('lvDesc').textContent=L.d;
+  document.getElementById('tabs').innerHTML=LEVELS.map((x,i)=>'<button class="'+(i+1===level?'on':'')+'" onclick="loadLevel('+(i+1)+')">'+(i+1)+'</button>').join('');
+  let h='';
+  data.forEach((it,i)=>{
+    const btns=(fn)=>'<div class="btns"><button onclick="'+fn+'('+i+')">Έλεγχος</button>'+(level===6?'':'<button class="ghost" onclick="showSteps('+i+')">Δείξε τα βήματα</button>')+'</div><div class="fb" id="fb'+i+'"></div>';
+    if(level<=4){
+      const n=String(it.m).length;
+      h+='<div class="ex" id="ex'+i+'"><span class="lt">'+LET[i]+')</span><br><div class="rows">'+
+        digitRow(it.m,n,'')+carryRow(n)+digitRow(it.s,n,'−')+'<div class="line"></div>'+answerRow(n)+'</div>'+
+        '<div class="hint">Τα μικρά διακεκομμένα κουτάκια είναι για τα κρατούμενα (προαιρετικά).</div>'+btns('checkEx')+'</div>';
+    }else if(level===5){
+      const n=String(it.m).length;
+      h+='<div class="ex" id="ex'+i+'"><span class="lt">'+LET[i]+')</span><br><div class="rows">'+
+        digitRow(it.m,n,'')+digitRow(it.s,n,'−')+'<div class="line"></div>'+digitRow(it.shown,n,'=')+'</div>'+
+        '<div class="choice"><label><input type="radio" name="f'+i+'" value="ok">Σωστή</label><label><input type="radio" name="f'+i+'" value="no">Λάθος</label></div>'+
+        '<div class="hint">Αν είναι λάθος, γράψε τη σωστή διαφορά:</div>'+
+        '<input class="txt" id="fx'+i+'" inputmode="numeric" placeholder="σωστή διαφορά">'+btns('checkFind')+'</div>';
+    }else{
+      h+='<div class="ex" id="ex'+i+'"><span class="lt">'+LET[i]+')</span>'+
+        '<p class="prob">'+PROBS[it.t](it.m,it.s)+'</p>'+
+        '<input class="txt" id="pa'+i+'" inputmode="numeric" placeholder="απάντηση">'+btns('checkProb')+'</div>';
+    }
+  });
+  document.getElementById('exgrid').innerHTML=h;
+  updateScore();
+}
+function updateScore(){
+  document.getElementById('score').textContent='Σωστές: '+solved.size+' από '+data.length;
+}
+function markDone(i){
+  solved.add(i);
+  document.getElementById('ex'+i).classList.add('done');
+  updateScore();
+}
+const fbEl=i=>document.getElementById('fb'+i);
+
+/* ---------- έλεγχοι ---------- */
+function checkEx(i){
+  const it=data[i],n=String(it.m).length,cols=analyze(it.m,it.s);
+  const ins=[...document.querySelectorAll('#ex'+i+' input.ans')];
+  let blank=false,firstBad=-1;
+  ins.forEach((inp,k)=>{
+    const col=n-1-k,v=inp.value.trim();
+    inp.classList.remove('ok','bad');
+    if(v===''){blank=true;return;}
+    if(Number(v)===cols[col].r)inp.classList.add('ok');
+    else{inp.classList.add('bad');if(firstBad===-1||col<firstBad)firstBad=col;}
+  });
+  const fb=fbEl(i);
+  if(firstBad>=0){
+    fb.innerHTML='<p class="nope">Κάτι δεν πάει καλά. Ξαναέλεγξε τη στήλη των: '+NAMES[firstBad].toLowerCase()+'.</p>'+(blank?'<p class="hint">Λείπουν και κάποια ψηφία.</p>':'');
+  }else if(blank){
+    fb.innerHTML='<p class="hint">Συμπλήρωσε όλα τα ψηφία της διαφοράς.</p>';
+  }else{
+    fb.innerHTML='<p class="good">Μπράβο, σωστά!</p><p>Δοκιμή: '+fmt(it.m-it.s)+' + '+fmt(it.s)+' = '+fmt(it.m)+'</p>';
+    markDone(i);
+  }
+}
+function showSteps(i){
+  const it=data[i],cols=analyze(it.m,it.s);
+  let h='<p><b>Τα βήματα:</b></p>';
+  cols.forEach((c,k)=>{h+='<p>'+explain(c,k)+'</p>';});
+  h+='<p><b>Διαφορά: '+fmt(it.m-it.s)+'</b></p>';
+  fbEl(i).innerHTML=h;
+}
+function checkFind(i){
+  const it=data[i],fb=fbEl(i),box=document.getElementById('fx'+i);
+  const ch=document.querySelector('input[name=f'+i+']:checked');
+  box.classList.remove('ok','bad');
+  if(!ch){fb.innerHTML='<p class="hint">Διάλεξε «Σωστή» ή «Λάθος».</p>';return;}
+  const val=clean(box.value);
+  const test=(d)=>fmt(d)+' + '+fmt(it.s)+' = '+fmt(d+it.s);
+  if(it.isCorrect){
+    if(ch.value==='ok'){
+      fb.innerHTML='<p class="good">Σωστά! Η πράξη είναι σωστή.</p><p>Δοκιμή: '+test(it.corr)+'</p>';
+      markDone(i);
+    }else{
+      fb.innerHTML='<p class="nope">Ξαναέλεγξε: κάνε τη δοκιμή με πρόσθεση (διαφορά + αφαιρετέος).</p>';
+    }
+  }else{
+    if(ch.value==='ok'){
+      fb.innerHTML='<p class="nope">Κάνε δοκιμή: '+test(it.shown)+'. Βγαίνει ο μειωτέος ('+fmt(it.m)+');</p>';
+    }else if(val!==''&&Number(val)===it.corr){
+      box.classList.add('ok');
+      fb.innerHTML='<p class="good">Μπράβο! Βρήκες το λάθος και το διόρθωσες.</p><p>Δοκιμή: '+test(it.corr)+'</p>';
+      markDone(i);
+    }else{
+      box.classList.add('bad');
+      fb.innerHTML='<p class="nope">Ναι, η πράξη έχει λάθος! Λύσε την ξανά και γράψε τη σωστή διαφορά.</p>';
+    }
+  }
+}
+function checkProb(i){
+  const it=data[i],fb=fbEl(i),box=document.getElementById('pa'+i);
+  box.classList.remove('ok','bad');
+  const v=clean(box.value);
+  if(v===''){fb.innerHTML='<p class="hint">Γράψε την απάντησή σου.</p>';return;}
+  if(Number(v)===it.corr){
+    box.classList.add('ok');
+    fb.innerHTML='<p class="good">Σωστά!</p><p>Πράξη: '+fmt(it.m)+' − '+fmt(it.s)+' = '+fmt(it.corr)+'</p>';
+    markDone(i);
+  }else{
+    box.classList.add('bad');
+    fb.innerHTML='<p class="nope">Δεν είναι σωστό. Ποια πράξη χρειάζεται; Ξαναδιάβασε την ερώτηση και κάνε και δοκιμή.</p>';
+  }
+}
+function checkAll(){
+  data.forEach((_,i)=>{
+    if(level<=4)checkEx(i);else if(level===5)checkFind(i);else checkProb(i);
+  });
+}
+
+/* ---------- πληκτρολόγηση ---------- */
+document.addEventListener('input',e=>{
+  const t=e.target;
+  if(t.classList.contains('ans')||t.classList.contains('cr')){
+    t.value=t.value.replace(/\D/g,'').slice(-1);
+    t.classList.remove('ok','bad');
+    if(t.classList.contains('ans')&&t.value){
+      const list=[...t.closest('.ex').querySelectorAll('input.ans')];
+      const k=list.indexOf(t);
+      if(k>0)list[k-1].focus();
+    }
+  }
+});
+document.addEventListener('keydown',e=>{
+  const t=e.target;
+  if(t.classList&&t.classList.contains('ans')&&e.key==='Backspace'&&t.value===''){
+    const list=[...t.closest('.ex').querySelectorAll('input.ans')];
+    const k=list.indexOf(t);
+    if(k<list.length-1)list[k+1].focus();
+  }
+});
+
+renderDemo();
+loadLevel(1);
+</script>
+</body>
+</html>
